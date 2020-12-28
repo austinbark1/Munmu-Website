@@ -4,7 +4,7 @@ const CLICKBUTTON = document.getElementById('click');
 const COUNTER = document.getElementById('counter');
 var counterNumber = 0;
 var clickPower = 1;
-var clickPowerCost = 30;
+var clickPowerCost = 10;
 
 window.onload = function() {
     console.log('Beginning to render the page...');
@@ -33,13 +33,10 @@ class IncrementAndDisplay {
     }
 
     clickPower = () => {
-        if (counterNumber >= clickPowerCost^clickPower){
-            console.log(counterNumber);
-            console.log(clickPowerCost^clickPower);
-            console.log(counterNumber >= clickPowerCost^clickPower);
+        if (counterNumber >= Math.pow(clickPowerCost, clickPower)){
+            counterNumber = counterNumber - Math.pow(clickPowerCost, clickPower);
             clickPower += 1;
             document.getElementById('clickPower').innerHTML = "Click Power " + clickPower;
-            counterNumber = counterNumber - clickPowerCost^clickPower;
             document.getElementById('counter').innerHTML = counterNumber;
         }
         return;
