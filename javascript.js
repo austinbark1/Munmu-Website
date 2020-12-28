@@ -3,6 +3,7 @@ const MAIN = document.getElementById('main');
 const CLICKBUTTON = document.getElementById('click');
 const COUNTER = document.getElementById('counter');
 var counterNumber = 0;
+var clickPower = 0;
 
 window.onload = function() {
     console.log('Beginning to render the page...');
@@ -19,18 +20,27 @@ class IncrementAndDisplay {
     <div class="counter" id="counter">${counterNumber}</div>
     <div class="clickButton" id="click">
         <button type="button" id="clickButton">Click</button>
-    </div>    
+    </div> 
+    <div class="store" id="store">
+        <button type="button" id="clickPower">Click Power ${clickPower}</button>
+    </div>   
     `;
 
     countUp = () => {
-        counterNumber += 1;
+        counterNumber += clickPower;
         document.getElementById('counter').innerHTML = counterNumber;
+    }
+
+    clickPower = () => {
+        clickPower += 1;
+        document.getElementById('clickPower').innerHTML = "Click Power " + clickPower;
     }
 
     render = () => {
         console.log('Rendering MainComponent template...')
         MAIN.innerHTML = this.template;
         document.getElementById('clickButton').addEventListener('click', this.countUp);
+        document.getElementById('clickPower').addEventListener('click', this.clickPower);
     }
 }
 
